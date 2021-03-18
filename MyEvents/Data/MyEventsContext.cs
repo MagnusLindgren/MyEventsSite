@@ -14,6 +14,8 @@ namespace MyEvents.Data
         {
         }
 
-        public DbSet<Event> Event { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Attendee> Attendees { get; set; }
+
     }
 }
