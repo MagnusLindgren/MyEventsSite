@@ -12,7 +12,7 @@ namespace MyEvents.Models
         public int OrganizerID { get; set; }
         public string Description { get; set; }
         public string Venue { get; set; }
-        public string Adress { get; set; }
+        public string Address { get; set; }
         public DateTime Date { get; set; }
         public int TicketsAvailable { get; set; }
         public Organizer Organizer { get; set; }

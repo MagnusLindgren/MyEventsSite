@@ -30,8 +30,8 @@ namespace MyEvents.Data
 
             var events = new Event[]
             {
-                new Event { Title = "Metallica", Description = "Concert", Venue = "Globen", Adress = "Storgatan 2", Date = new DateTime(20210301), TicketsAvailable = 20 },
-                new Event { Title = "Rock Around", Description = "Festival", Venue = "Gröna fältet", Adress = "Okänd", Date = new DateTime(20210914), TicketsAvailable = 200 }
+                new Event { Title = "Metallica", Description = "Concert", Venue = "Globen", Address = "Storgatan 2", Date = new DateTime(20210301), TicketsAvailable = 20 },
+                new Event { Title = "Rock Around", Description = "Festival", Venue = "Gröna fältet", Address = "Okänd", Date = new DateTime(20210914), TicketsAvailable = 200 }
             };
 
             context.AddRange(events);
