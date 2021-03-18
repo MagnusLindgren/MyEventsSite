@@ -16,11 +16,13 @@ namespace MyEvents.Data
 
         public DbSet<Event> Events { get; set; }
         public DbSet<Attendee> Attendees { get; set; }
+        public DbSet<Organizer> Organizers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             modelbuilder.Entity<Event>().ToTable("Event");
             modelbuilder.Entity<Attendee>().ToTable("Attendee");
-        }
+            modelbuilder.Entity<Organizer>().ToTable("Organizer");
+        }        
     }
 }
