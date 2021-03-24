@@ -30,7 +30,7 @@ namespace MyEvents.Pages.Attendees
                 return NotFound();
             }
 
-            Attendee = await _context.Attendees.FirstOrDefaultAsync(m => m.ID == id);
+            Attendee = await _context.Attendees.FirstOrDefaultAsync(m => m.AttendeeId == id);
 
             if (Attendee == null)
             {
@@ -56,7 +56,7 @@ namespace MyEvents.Pages.Attendees
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AttendeeExists(Attendee.ID))
+                if (!AttendeeExists(Attendee.AttendeeId))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace MyEvents.Pages.Attendees
 
         private bool AttendeeExists(int id)
         {
-            return _context.Attendees.Any(e => e.ID == id);
+            return _context.Attendees.Any(e => e.AttendeeId == id);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace MyEvents.Pages.Events
             }
 
             Event = await _context.Events
-                .Include(e => e.Organizer).FirstOrDefaultAsync(m => m.ID == id);
+                .Include(e => e.Organizer).FirstOrDefaultAsync(m => m.EventId == id);
 
             if (Event == null)
             {

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyEvents.Data;
 
 namespace MyEvents.Data.Migrations
 {
     [DbContext(typeof(MyEventsContext))]
-    partial class MyEventsContextModelSnapshot : ModelSnapshot
+    [Migration("20210323133546_changedprefix")]
+    partial class changedprefix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,22 +23,22 @@ namespace MyEvents.Data.Migrations
 
             modelBuilder.Entity("AttendeeEvent", b =>
                 {
-                    b.Property<int>("AttendeesAttendeeId")
+                    b.Property<int>("AttendeesID")
                         .HasColumnType("int");
 
-                    b.Property<int>("EventsEventId")
+                    b.Property<int>("EventsID")
                         .HasColumnType("int");
 
-                    b.HasKey("AttendeesAttendeeId", "EventsEventId");
+                    b.HasKey("AttendeesID", "EventsID");
 
-                    b.HasIndex("EventsEventId");
+                    b.HasIndex("EventsID");
 
                     b.ToTable("AttendeeEvent");
                 });
 
             modelBuilder.Entity("MyEvents.Models.Attendee", b =>
                 {
-                    b.Property<int>("AttendeeId")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -50,14 +52,14 @@ namespace MyEvents.Data.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AttendeeId");
+                    b.HasKey("ID");
 
                     b.ToTable("Attendee");
                 });
 
             modelBuilder.Entity("MyEvents.Models.Event", b =>
                 {
-                    b.Property<int>("EventId")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -71,7 +73,7 @@ namespace MyEvents.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OrganizerId")
+                    b.Property<int>("OrganizerID")
                         .HasColumnType("int");
 
                     b.Property<int>("TicketsAvailable")
@@ -83,16 +85,16 @@ namespace MyEvents.Data.Migrations
                     b.Property<string>("Venue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("EventId");
+                    b.HasKey("ID");
 
-                    b.HasIndex("OrganizerId");
+                    b.HasIndex("OrganizerID");
 
                     b.ToTable("Event");
                 });
 
             modelBuilder.Entity("MyEvents.Models.Organizer", b =>
                 {
-                    b.Property<int>("OrganizerId")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -106,7 +108,7 @@ namespace MyEvents.Data.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("OrganizerId");
+                    b.HasKey("ID");
 
                     b.ToTable("Organizer");
                 });
@@ -115,13 +117,13 @@ namespace MyEvents.Data.Migrations
                 {
                     b.HasOne("MyEvents.Models.Attendee", null)
                         .WithMany()
-                        .HasForeignKey("AttendeesAttendeeId")
+                        .HasForeignKey("AttendeesID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MyEvents.Models.Event", null)
                         .WithMany()
-                        .HasForeignKey("EventsEventId")
+                        .HasForeignKey("EventsID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -130,7 +132,9 @@ namespace MyEvents.Data.Migrations
                 {
                     b.HasOne("MyEvents.Models.Organizer", "Organizer")
                         .WithMany("Events")
-                        .HasForeignKey("OrganizerId");
+                        .HasForeignKey("OrganizerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Organizer");
                 });
