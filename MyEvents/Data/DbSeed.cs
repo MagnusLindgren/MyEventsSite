@@ -30,7 +30,10 @@ namespace MyEvents.Data
 
             var organizers = new Organizer[]
             {
-                new Organizer { Name = "JeMa Fest AB", Email = "jema@fest.com", PhoneNumber = "0798123445" }
+                new Organizer { Name = "JeMa IT AB", Email = "jema@it.com", PhoneNumber = "0798123445" },
+                new Organizer { Name = "Music Gruop", Email = "music@group.com", PhoneNumber = "0700654987" },
+                new Organizer { Name = "Sports & Stuff", Email = "sports@hotmail.com", PhoneNumber = "0715972345" },
+                new Organizer { Name = "Event Maker", Email = "eventmaker@gmail.com", PhoneNumber = "0713465798" }
             };
             context.AddRange(organizers);
             context.SaveChanges();
@@ -40,22 +43,45 @@ namespace MyEvents.Data
                 new Event 
                 { 
                     Title = "Metallica",
-                    Organizer = organizers[0],
+                    Organizer = organizers[1],
                     Description = "Concert", 
                     Venue = "Globen", 
                     Address = "Storgatan 2", 
-                    Date = new DateTime(20210301), 
-                    TicketsAvailable = 20 
+                    Date =  DateTime.Parse("2021-03-14"), 
+                    TicketsAvailable = 30245 
                 },
+
                 new Event 
                 { 
                     Title = "Rock Around",
-                    Organizer = organizers[0],
+                    Organizer = organizers[1],
                     Description = "Festival", 
                     Venue = "Gröna fältet", 
                     Address = "Okänd", 
-                    Date = new DateTime(20210914), 
-                    TicketsAvailable = 200 
+                    Date = DateTime.Parse("2021-09-14"), 
+                    TicketsAvailable = 20231 
+                },
+
+                new Event
+                {
+                    Title = "Lär dig koda rätt",
+                    Organizer = organizers[0],
+                    Description = "Lär dig koda på rätt sätt. Vi går igenom objekt orienterad programmering.",
+                    Venue = "Tältets konferansrum",
+                    Address = "Mittigatan 2",
+                    Date = DateTime.Parse("2021-07-29"),
+                    TicketsAvailable = 200
+                },
+
+                new Event
+                {
+                    Title = "AIK - Hammarby",
+                    Organizer = organizers[2],
+                    Description = "Fotbolls match",
+                    Venue = "Stora Plan",
+                    Address = "Långgatan 123",
+                    Date = DateTime.Parse("2021-07-30"),
+                    TicketsAvailable = 1200
                 }
             };
 

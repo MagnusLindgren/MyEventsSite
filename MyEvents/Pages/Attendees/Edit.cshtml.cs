@@ -13,15 +13,16 @@ namespace MyEvents.Pages.Attendees
 {
     public class EditModel : PageModel
     {
-        private readonly MyEvents.Data.MyEventsContext _context;
+        private readonly MyEventsContext _context;
 
-        public EditModel(MyEvents.Data.MyEventsContext context)
+        public EditModel(MyEventsContext context)
         {
             _context = context;
         }
 
         [BindProperty]
         public Attendee Attendee { get; set; }
+        public Event Event { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

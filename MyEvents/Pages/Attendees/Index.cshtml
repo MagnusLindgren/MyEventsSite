@@ -2,10 +2,11 @@
 @model MyEvents.Pages.Attendees.IndexModel
 
 @{
-    ViewData["Title"] = "My Profile";
+    ViewData["Title"] = "My Events";
 }
 
-<h1>My details</h1>
+<h1>@Html.DisplayFor(model => model.Attendee[0].Name) Events</h1>
+
 
 <table class="table">
     <thead>
