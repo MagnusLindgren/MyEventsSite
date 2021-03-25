@@ -7,10 +7,23 @@
 
 <h1>MyEvents</h1>
 
-<table>
-    @foreach (var item in Model.Attendee.Events)
-    {
-        @Html.DisplayFor(modelItem => item.Title);
-    }
+<table class="table">
+    <thead>
+        <tr>
+            <th>What</th>
+            <th>When</th>
+            <th>Where</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Attendee.Events)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+            <td>@Html.DisplayFor(modelItem => item.Venue)</td>
+        </tr>
+        }
+    </tbody>
 </table>
 
