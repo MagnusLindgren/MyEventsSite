@@ -19,11 +19,13 @@ namespace MyEvents.Pages.Attendees
             _context = context;
         }
 
-        public IList<Attendee> Attendee { get;set; }
+        public Attendee Attendee{ get; set; }
 
         public async Task OnGetAsync()
         {
-            Attendee = await _context.Attendees.ToListAsync();
+            Attendee = await _context.Attendees.Where(a => a.AttendeeId == 1)
+                .Include(e => e.Events)
+                .FirstOrDefaultAsync();
         }
     }
 }
