@@ -10,11 +10,11 @@ using MyEvents.Models;
 
 namespace MyEvents.Pages.Attendees
 {
-    public class IndexModel : PageModel
+    public class MyEventsModel : PageModel
     {
-        private readonly MyEventsContext _context;
+        private readonly MyEvents.Data.MyEventsContext _context;
 
-        public IndexModel(MyEventsContext context)
+        public MyEventsModel(MyEvents.Data.MyEventsContext context)
         {
             _context = context;
         }

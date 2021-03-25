@@ -7,58 +7,28 @@
 
 <h1>Events</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Venue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].TicketsAvailable)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Event) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Venue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
+
+<div id="accordian"> 
+    @foreach (var item in Model.Event)
+    {
+        <div class="card">
+            <div class="card header" id="heading_@item.EventId">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_@item.EventId" aria-expanded="false" aria-controls="collapse_@item.EventId">
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </button>
+                </h5>
                 @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TicketsAvailable)
-            </td>
-            <td>
-                <a asp-page="./Details" asp-route-id="@item.EventId">Go to this event</a> 
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            </div>
+            <div id="collapse_@item.EventId" class="collapse" aria-labelledby="heading_@item.EventId" data-parent="#accordian">
+                <div class="card-body">
+                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Venue)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Address)</p>
+                    <a class="btn btn-primary" asp-page="../Attendees/MyEvents" asp-route-id="@item.EventId">Join this event!</a>
+                </div>
+            </div>
+        </div>
+     }
+</div>
+
