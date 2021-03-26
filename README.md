@@ -20,8 +20,8 @@ Content Page står för själva UI:n, alltså hur sidan ser ut.
 
 # MVC
 
-- Model hanterar logik och regler för applikationen.
+- Model innehåller klasser som beskriver datan som arbetas med.
 
-- View är vad användaren ser och interagerar med. 
+- View är applikationens UI, vad användaren ser och interagerar med. 
 
-- Controller tar emot requests från View och hanterar den datan eller skickar den vidare till Model. Det är Controlelr som sköter kommunikationen mellan Model och View.
+- Controller tar emot data från användaren (från View) och kommunicerar den vidare till Model vid behov. Hela applikationens flöde och logik.
