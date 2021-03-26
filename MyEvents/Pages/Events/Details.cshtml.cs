@@ -48,17 +48,18 @@ namespace MyEvents.Pages.Events
                 return NotFound();
             }
 
-            var attendee = await _context.Attendees.Where(a => a.AttendeeId == 1)
+            // Kalla på attendee, inkludera events (ICollection)
+            var attendee = await _context.Attendees
+                .Where(a => a.AttendeeId == 1)
                 .Include(e => e.Events)
                 .FirstOrDefaultAsync();
-            var join = await _context.Events.Where(e => e.EventId == id).FirstOrDefaultAsync();
+
+            // Vilket event vi pratar om. Event id från url
+            var join = await _context.Events
+                .Where(e => e.EventId == id)
+                .FirstOrDefaultAsync();
 
             attendee.Events.Add(join);
-            //var join = await _context.Events.Where(e => e.EventId == id).FirstOrDefaultAsync();
-
-            //attendee.Events.Add(join);
-            //Console.WriteLine(attendee.Name + join.EventId);            
-            //await _context.AddAsync(attendee);
 
             await _context.SaveChangesAsync();
 
