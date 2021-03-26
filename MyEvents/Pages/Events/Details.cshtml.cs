@@ -48,7 +48,7 @@ namespace MyEvents.Pages.Events
                 return NotFound();
             }
 
-            // Kalla på attendee, inkludera events (ICollection)
+            // Kalla på attendee, inkludera events (ICollection), "hårdkodad attendee"
             var attendee = await _context.Attendees
                 .Where(a => a.AttendeeId == 1)
                 .Include(e => e.Events)

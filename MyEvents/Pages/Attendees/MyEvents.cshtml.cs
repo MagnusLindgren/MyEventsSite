@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyEvents.Data;
@@ -12,9 +9,9 @@ namespace MyEvents.Pages.Attendees
 {
     public class MyEventsModel : PageModel
     {
-        private readonly MyEvents.Data.MyEventsContext _context;
+        private readonly MyEventsContext _context;
 
-        public MyEventsModel(MyEvents.Data.MyEventsContext context)
+        public MyEventsModel(MyEventsContext context)
         {
             _context = context;
         }
