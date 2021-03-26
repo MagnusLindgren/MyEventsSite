@@ -10,7 +10,7 @@ I ConfigureServices lägger man till de services man vill att appen ska ha. Som 
 Innehåller bland annat CSS, javascript, bilder mm. Det vill säga alla de statiska filerna som appen använder.
 
 # Razor språket
-Det är en blandning av HTML och C# kod. Det används för att bygga upp Content Page.
+Razor språket är en markup syntax för server baserad kod till webb platser. Det består av C# och HTML blandat för att bygga upp  Content Page.
 
 # Razor pages
 Razor pages är ett template som ingår i ASP.NET Core.
